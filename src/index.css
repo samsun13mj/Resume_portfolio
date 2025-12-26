@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/* Global Instagram-style background
+html,
+body {
+  min-height: 100%;
+  color: #e5e7eb;
+
+ 
+  background: linear-gradient(
+    135deg,
+    #ffffff,  
+    #ffffff,  
+    #ffffff   
+  );
+} */
+
+
+
+/* :root {
+  --bg-primary: #f9fafb;
+  --bg-card: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --accent: #14b8a6;
+}
+
+
+.dark {
+  --bg-primary: #0b1220;
+  --bg-card: #0f172a;
+  --text-primary: #e5e7eb;
+  --text-secondary: #94a3b8;
+}
+
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+} */
