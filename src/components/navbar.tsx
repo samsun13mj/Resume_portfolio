@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
@@ -15,35 +18,70 @@ const Navbar = () => {
       "
     >
       {/* OUTER WRAPPER */}
-      <div className="w-full flex items-center">
+      <div className="w-full flex items-center justify-between px-6 md:px-10 py-4">
 
-        {/* BRAND – LEFT CORNER */}
-        <div className="pl-6 md:pl-10">
-          <h1
-            className="
-              text-2xl font-extrabold tracking-wide
-              bg-linear-to-r from-purple-600 to-sky-500
-              bg-clip-text text-transparent
-            "
-          >
-            SAMSUN&nbsp;S
-          </h1>
+        {/* BRAND */}
+        <h1
+          className="
+            text-2xl font-extrabold tracking-wide
+            bg-linear-to-r from-purple-600 to-sky-500
+            bg-clip-text text-transparent
+          "
+        >
+          SAMSUN&nbsp;S
+        </h1>
+
+        {/* DESKTOP LINKS */}
+        <div className="hidden md:flex gap-8 text-sm font-medium text-gray-700">
+          {navLinks.map(({ name, path }) => (
+            <NavLink
+              key={path}
+              to={path}
+              end={path === '/'}
+              className={({ isActive }) =>
+                `
+                  transition-all
+                  hover:text-sky-600
+                  ${isActive ? 'text-purple-600 font-semibold' : ''}
+                `
+              }
+            >
+              {name}
+            </NavLink>
+          ))}
         </div>
 
-        {/* LINKS – CENTERED CONTAINER */}
-        <div className="flex-1">
-          <div className="max-w-7xl mx-auto px-6 py-4 flex justify-end">
-            <div className="hidden md:flex gap-8 text-sm font-medium text-gray-700">
+        {/* MOBILE MENU BUTTON */}
+        <button
+          className="md:hidden text-2xl font-bold"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? '✕' : '☰'}
+        </button>
+      </div>
+
+      {/* MOBILE MENU */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35 }}
+            className="md:hidden bg-white/90 backdrop-blur border-t border-black/10"
+          >
+            <div className="flex flex-col gap-4 px-6 py-6 text-sm font-medium">
               {navLinks.map(({ name, path }) => (
                 <NavLink
                   key={path}
                   to={path}
                   end={path === '/'}
+                  onClick={() => setOpen(false)}
                   className={({ isActive }) =>
                     `
                       transition-all
                       hover:text-sky-600
-                      ${isActive ? 'text-purple-600 font-semibold' : ''}
+                      ${isActive ? 'text-purple-600 font-semibold' : 'text-gray-700'}
                     `
                   }
                 >
@@ -51,10 +89,9 @@ const Navbar = () => {
                 </NavLink>
               ))}
             </div>
-          </div>
-        </div>
-
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };
