@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-start justify-center px-6 pt-28 bg-linear-to-br from-background via-primary to-background"
+      className="min-h-screen flex items-start justify-center px-6 pt-28
+                 bg-linear-to-br from-background via-primary to-background"
     >
       <div className="max-w-5xl text-center">
 
@@ -59,8 +61,9 @@ const Home = () => {
           viewport={{ once: false }}
           className="flex flex-col sm:flex-row justify-center gap-6"
         >
-          <a
-            href="/projects"
+          {/* Internal routing – React Router */}
+          <Link
+            to="/projects"
             className="
               px-8 py-3 rounded-xl
               bg-transparent
@@ -72,10 +75,11 @@ const Home = () => {
             "
           >
             View Projects
-          </a>
+          </Link>
 
+          {/* Resume download */}
           <a
-            href="/Samsun S Resume.pdf"
+            href="/Samsun_S_Resume.pdf"
             download
             className="
               px-8 py-3 rounded-xl
