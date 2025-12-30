@@ -3,43 +3,38 @@ import profileImg from '../assets/profile.png';
 
 const About = () => {
   return (
-    <section id="about" className="max-w-7xl mx-auto px-1 py-24">
+    <section id="about" className="max-w-7xl mx-auto px-4 py-16 md:py-24">
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        viewport={{ once: true }}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
         className="
           relative
           rounded-3xl
           border border-white/20
           bg-white/80 backdrop-blur-xl
           shadow-xl
-          p-7 md:p-10
+          p-6 md:p-10
         "
       >
         {/* Soft Gradient Background */}
-        <div className="absolute -inset-px rounded-3xl bg-linear-to-r from-accent/20 via-sky-400/20 to-indigo-400/20 blur-xl opacity-70" />
+        <div className="absolute -inset-px rounded-3xl bg-linear-to-r from-sky-200/40 via-blue-200/40 to-indigo-200/40 blur-xl opacity-70" />
 
-        <div className="relative grid md:grid-cols-2 gap-12 items-center">
+        <div className="relative grid md:grid-cols-2 gap-10 items-center">
+
           {/* LEFT – PROFILE IMAGE */}
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="flex justify-center"
-          >
-            <div className="relative group">
-              {/* Gradient Ring */}
-              <div className="absolute inset-0 rounded-full bg-linear-to-r from-accent via-sky-400 to-indigo-400 blur-lg opacity-90 group-hover:opacity-100 transition" />
+          <div className="flex justify-center">
+            <div className="relative">
+              {/* Glow Ring */}
+              <div className="absolute inset-0 rounded-full bg-linear-to-r from-blue-500 via-sky-400 to-indigo-500 blur-lg opacity-90" />
 
               <img
                 src={profileImg}
                 alt="Profile"
                 className="
                   relative
-                  w-72 h-72
+                  w-52 h-52
+                  sm:w-64 sm:h-64
                   md:w-80 md:h-80
                   rounded-full
                   object-cover
@@ -48,59 +43,45 @@ const About = () => {
                 "
               />
             </div>
-          </motion.div>
+          </div>
 
           {/* RIGHT – CONTENT */}
-          <div>
-            {/* TITLE */}
-            <motion.div
-              initial={{ backgroundPosition: '0% 50%' }}
-              whileInView={{ backgroundPosition: '100% 50%' }}
-              transition={{ duration: 1.2, ease: 'easeOut' }}
-              viewport={{ once: false }}
+          <div className="text-center md:text-left">
+
+            {/* TITLE – STRONG BLUE (NO FADE) */}
+            <h2
               className="
-                text-5xl md:text-6xl
+                text-4xl md:text-5xl
                 font-extrabold
                 mb-4
-                bg-linear-to-r from-accent via-sky-400 to-indigo-400
-                bg-size-[200%_200%]
-                bg-clip-text text-transparent
+                text-blue-600
               "
             >
-              <h2
-                className="
-                  text-4xl md:text-5xl
-                  font-extrabold
-                  bg-linear-to-r from-accent via-sky-500 to-indigo-500
-                  bg-clip-text text-transparent
-                "
-              >
-                About Me
-              </h2>
-            </motion.div>
+              About Me
+            </h2>
 
             {/* DESCRIPTION */}
-            <p className="text-lg text-gray-800 leading-relaxed mb-4">
-              I’m a <span className="font-semibold text-accent">Frontend Developer</span> specializing in
+            <p className="text-base md:text-lg text-gray-800 leading-relaxed mb-4">
+              I’m a <span className="font-semibold text-blue-600">Frontend Developer</span> specializing in
               <span className="font-semibold text-sky-600"> React</span> and
               <span className="font-semibold text-indigo-600"> Angular</span>, currently working at
               <span className="font-semibold text-gray-900"> Bezohminds Pvt. Ltd.</span>
             </p>
 
-            <p className="text-lg text-gray-700 leading-relaxed mb-4">
+            <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-4">
               I build modern, scalable, and high-performance web applications with a strong
               focus on clean UI, accessibility, and maintainable architecture.
             </p>
 
-            <p className="text-lg text-gray-600 leading-relaxed mb-8">
+            <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-8">
               I enjoy crafting delightful user experiences, collaborating with teams,
               and continuously improving my frontend skills.
             </p>
 
             {/* STATS */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="rounded-xl bg-white shadow-md p-4 text-center">
-                <p className="text-2xl font-bold text-accent">2+</p>
+                <p className="text-2xl font-bold text-blue-600">2+</p>
                 <p className="text-sm text-gray-600 mt-1">Years Learning</p>
               </div>
 
@@ -114,6 +95,7 @@ const About = () => {
                 <p className="text-sm text-gray-600 mt-1">Work Experience</p>
               </div>
             </div>
+
           </div>
         </div>
       </motion.div>
